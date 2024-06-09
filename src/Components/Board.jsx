@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 
 const Board = () => {
     const [board, setBoard] = useState(["", "", "", "", "", "", "", "", ""]);
@@ -116,8 +118,8 @@ const Board = () => {
 
     return (
         <div className="h-screen w-full flex flex-col justify-center items-center bg-slate-500">
-            <div className="text-2xl font-semibold text-white mb-5">Turn: {circleTurn ? "Player X" : "Bot (O)"}</div>
-            <div className="w-4/6 h-2/6 md:w-2/6 lg:w-2/6 xl:w-1/6 grid grid-cols-3 grid-rows-3">
+            <div className="text-2xl font-semibold text-white mb-5">You are Player X</div>
+            <div className="w-4/6 h-2/6 md:w-2/6 lg:w-2/6 xl:w-1/6 mb-5 grid grid-cols-3 grid-rows-3">
                 {board.map((cell, index) => (
                     <div
                         key={index}
@@ -129,11 +131,23 @@ const Board = () => {
                 ))}
             </div>
             {winner && (
-                <div className="absolute h-screen w-full flex flex-col justify-center items-center bg-lime-500 text-2xl font-semibold text-white mb-5">
+                <div className="absolute h-full w-full flex flex-col justify-center items-center bg-lime-500 text-2xl font-semibold text-white mb-5">
                     {winner === "tie" ? <div>It's a Tie!</div> : <div>Winner: {winner}</div>}
-                    <div className="cursor-pointer px-3 py-1 rounded-2xl border" onClick={handleReset}>Reset</div>
+                    <div className="flex justify-center items-center py-2 px-4 md:cursor-pointer rounded-2xl border" onClick={handleReset}>Reset</div>
                 </div>
             )}
+
+            {/* Add made by and developer contact info and social media links */}
+
+            <div className="flex items-baseline gap-2 mt-5" >
+                <p className="text-sm text-gray-300" >Made by:</p>
+                <p className="text-md text-white" >Vaibhav Pandey❤️</p>
+            </div>
+
+            <div className="flex gap-5 text-2xl text-white" >
+                <p className="text-md text-white mt-5"><a href="https://github.com/vaibhavpandey00" target="_blank" rel="noopener noreferrer"><FaGithub /></a></p>
+                <p className="text-md text-white mt-5"><a href="http://www.linkedin.com/in/vaibhavpandey0" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a></p>
+            </div>
         </div>
     );
 };
